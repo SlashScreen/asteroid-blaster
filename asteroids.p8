@@ -98,7 +98,9 @@ function new_asteroid()
 		--if 3d, rotate also
 		as.z += 1
 		if as.z == 100 then
-			if p.x < as.x+as.size and p.x > as.x and p.y > as.y-as.size and p.y < as.y then
+			phitbox = make_box(p.x,p.y,6,2)
+			ashitbox = make_box(as.x,as.y,as.size,as.size) --haha
+			if overlap(phitbox, ashitbox) then 
 				g.screen = "dead"
 			end
 			del(g.as,as)
