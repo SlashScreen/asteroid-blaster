@@ -209,9 +209,16 @@ function dialate_around_point(origin,size,points)
 	--pseudocode:
 	--loop through point, dialate around origin
 	local out = {}
+	toggle = true
 	for i in pairs(points) do
-		o = origin
+		if toggle then
+			o = (origin.x - i )*i
+		else
+			o = (origin.y - i )*i
+		end
+		add(out,o)
 	end
+	return out
 end
 __gfx__
 00000000000220000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
