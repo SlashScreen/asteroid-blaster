@@ -172,6 +172,47 @@ function draw_polygon157(points)
           rectfill(xl[y],y,xr[y],y,8)
       end
   end
+  
+function gen_aster_shape(size)
+	--generates points for an asteroid.
+	--returns shape object
+	--shape object:
+	-- ||_ list of craters
+	-- |_ lsit of points
+	--crater object
+	-- ||_ which crater sprite to use
+	-- |_ point
+	local sh = {}
+	local craters = {}
+	local pnts = {}
+	for i = 0,flr(rnd(3)),1 do
+		local crater = {}
+		crater.x = rnd(size)
+		crater.y = rnd(size)
+		crater.c = rnd(4)
+		add(craters,crater)
+	end
+	for i = 0,7,1 do
+		x = cos(i*45)*(size/2) --x
+		y = sin(i*45)*(size/2) --y
+		add(pnts,x+rnd(-7)) --x
+		add(pnts,x+rnd(-7)) --y
+	end
+	sh.craters = craters
+	sh.points = pnts
+	return sh
+end
+
+function dialate_around_point(origin,size,points)
+	--dialates shape around an origin by size. returns points.
+	
+	--pseudocode:
+	--loop through point, dialate around origin
+	local out = {}
+	for i in pairs(points) do
+		o = origin
+	end
+end
 __gfx__
 00000000000220000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
